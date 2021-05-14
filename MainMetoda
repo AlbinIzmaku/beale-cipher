@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.*;
+
+public class MainMetoda {
+
+    public static void main(String[] args)throws Exception,IOException {
+        Dekriptimi d = new Dekriptimi();
+    	Enkriptimi e = new Enkriptimi();
+
+    	//System.out.println(args.toString());
+        if(args.length != 5){
+            throw new Exception("Ju lutem permbahuni sintakses :> ds beale encrypt/decrypt <book> <plaintext>");
+            
+        }
+        else{
+            String dsParameter = args[0];
+            String bealeParameter = args[1];
+            String decryptorEncrypt = args[2];
+            String fileName = args[3];
+            String plainText = args[4];
+            String pathText = "";
+            File file = new File(fileName);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                pathText += line;
+            }
+            System.out.println(pathText);
+
+            
+            if(decryptorEncrypt.equals("encrypt")) {
+            	String encryptedString = e.Encrypt(plainText, pathText);
+            	System.out.println("Enkriptimi: " + encryptedString);
+            	
+            }
+            if(decryptorEncrypt.equals("decrypt")) {
+            	String decryptedString = d.Decrpyt(plainText, pathText);
+                System.out.println("Dekriptimi: " + decryptedString);
+                
+            }
+        }
+
+    }
+}
