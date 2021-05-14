@@ -1,0 +1,21 @@
+public class Dekriptimi {
+
+    public static String Decrpyt(String cipherText,String textBook)
+    {
+        cipherText = cipherText.replaceAll(",","");
+        String [] cipherTextArray = cipherText.split(" ");
+        String[] fjalet = new String[cipherTextArray.length];
+        String [] textDocument = textBook.split("");
+
+        for(int i=0;i< cipherTextArray.length;i++){
+            fjalet[i] = textDocument[(Integer.parseInt(cipherTextArray[i])) - 1];
+        }
+        String kthePlain = "";
+
+        for(int k = 0;k<fjalet.length;k++)
+        {
+            kthePlain +=fjalet[k].substring(0,1) + "";
+        }
+        return kthePlain;
+    }
+}
