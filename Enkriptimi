@@ -1,0 +1,33 @@
+import java.util.Random;
+
+public class Enkriptimi {
+    public static String Encrypt(String plaintext, String textBook) {
+        textBook = textBook.toLowerCase();
+        plaintext = plaintext.toLowerCase();
+
+        String[] textDocument = textBook.split(" ");
+        char[] plaintextArray = plaintext.toCharArray();
+        String ciphertexti = "";
+        String ciphertexti1 = "";
+        Random rand = new Random();
+        for (int i = 0; (i < plaintext.length()); i++) {
+            String tempciphertexti = "";
+            if (plaintext.charAt(i) == ' ') {
+            	continue;
+            }
+            for (int j = 0; (j < textDocument.length); j++) {
+                String word = textDocument[j];
+                if (word.startsWith(Character.toString(plaintextArray[i]))){
+
+                    tempciphertexti += j + 1 + " ";
+                }
+            }
+            String[] tempArray = tempciphertexti.split(" ");
+            int index1 = rand.nextInt(tempArray.length);
+            ciphertexti1 = (ciphertexti1
+                    + (tempArray[index1].toString() + ", "));
+            ciphertexti = ciphertexti1.substring(0, (ciphertexti1.length() - 2));
+        }
+        return ciphertexti;
+    }
+}
